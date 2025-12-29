@@ -61,3 +61,36 @@ pip install tensorflow pandas numpy librosa soundfile tqdm scikit-learn
 
 # Optional: Install FFmpeg for .mp3/.m4a support
 conda install -c conda-forge ffmpeg
+```
+### 2. Live Demo (Test a File)
+To test if a specific audio file is real or fake:
+
+1. Place your audio file (e.g., `test.wav`) in the project folder.
+2. Run the demo script:
+
+```bash
+python demo.py
+```
+### 3. Training
+To retrain the model on the ASVspoof dataset:
+
+```bash
+python train.py
+```
+### 4. Evaluation
+To reproduce the 21.84% EER score on the full Dev set:
+```bash
+python evaluation.py
+```
+
+## 🔍 Forensic Analysis
+Post-evaluation analysis revealed two primary failure modes:
+
+Overconfidence (False Alarms): The model aggressively flags real audio containing microphone pops, static, or extremely short durations (<1s) as "fake."
+
+High-Quality Attacks (Missed Detection): State-of-the-art Neural Vocoders (e.g., HiFi-GAN) that produce artifact-free spectrograms can occasionally bypass the detector, appearing "cleaner" than real human speech.
+
+## 📜 Acknowledgments
+Dataset: ASVspoof 5 Challenge (Automatic Speaker Verification Spoofing and Countermeasures).
+
+Tools: Librosa for audio processing, TensorFlow for deep learning.
