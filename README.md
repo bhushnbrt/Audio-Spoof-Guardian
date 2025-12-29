@@ -54,7 +54,10 @@ You need a Python environment with the following libraries:
 
 ```bash
 conda create -n adf_env python=3.9
+
 conda activate adf_env
+
 pip install tensorflow pandas numpy librosa soundfile tqdm scikit-learn
+
 # Optional: Install FFmpeg for .mp3/.m4a support
 conda install -c conda-forge ffmpeg
